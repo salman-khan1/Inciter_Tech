@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .key-card{
+        width: 200px;
+        height: 200px;
+        border: 1px solid blueviolet;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 5px;
+        font-size: 40px;
+        font-weight: 500;
+    }
+    .wrapper{
+        display: flex;
+        flex-wrap: wrap;
+       
+    }
+    .playing{
+        border: 1px solid green;
+        scale: 1.1;
+        background-color: aqua;
+        transform: .3s all ;
+
+    }
+</style>
+<body>
+    <div class="wrapper">
+        <div class="key-card a" >
+            <span>a</span>
+        </div>
+        <div class="key-card b">
+            <span>b</span>
+        </div>
+        <div class="key-card c">
+            <span>c</span>
+        </div>
+        <div class="key-card d">
+            <span>d</span>
+        </div>
+        <div class="key-card e">
+            <span>e</span>
+        </div>
+        <div class="key-card f">
+            <span>f</span>
+        </div>
+        <div class="key-card g">
+            <span>g</span>
+        </div>
+        <div class="key-card h">
+            <span>h</span>
+        </div>
+        <div class="key-card i">
+            <span>i</span>
+        </div>
+    </div>
+
+    <div class="txt"></div>
+    <audio src="mixkit-access-allowed-tone-2869.wav" class="a"></audio>
+    <audio src="mixkit-arabian-mystery-harp-notification-2489.wav" class="b"></audio>
+    <audio src="mixkit-arcade-magic-notification-2342.wav" class="c"></audio>
+    <audio src="mixkit-atm-cash-machine-key-press-2841.wav" class="d"></audio>
+    <audio src="mixkit-bell-notification-933.wav" class="e"></audio>
+    <audio src="mixkit-bubble-pop-up-alert-notification-2357.wav" class="f"></audio>
+    <audio src="mixkit-correct-answer-reward-952.wav" class="g"></audio>
+    <audio src="mixkit-correct-answer-tone-2870.wav" class="h"></audio>
+    <audio src="mixkit-digital-quick-tone-2866.wav" class="i"></audio>
+    <audio src="mixkit-doorbell-tone-2864.wav"  class="j"></audio>
+</body>
+<script>
+window.addEventListener('keydown',(event)=>{
+    const keyPress =document.querySelector('.txt')
+    keyPress.innerHTML=event.key
+    const audio=document.querySelector(`audio[class=${event.key}]`)
+    const card=document.querySelector(`div[class='key-card ${event.key}']`)
+    if(!card)return
+    card.classList.add('playing')
+    setTimeout(()=>{
+        card.classList.remove('playing')
+    },500)
+    if(audio===null) return;
+    audio.currentTime=0;
+    audio.play()
+
+})
+</script> 
+</html>
